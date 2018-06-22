@@ -131,8 +131,10 @@ class ServerlessDynamodbLocal {
                 region: options.region,
             };
         } else {
+	    const port = process.env.DYNAMO_PORT ? process.env.DYNAMO_PORT : this.port
+
             dynamoOptions = {
-                endpoint: `http://${this.host}:${this.port}`,
+                endpoint: `http://${this.host}:${port}`,
                 region: "localhost",
                 accessKeyId: "MOCK_ACCESS_KEY_ID",
                 secretAccessKey: "MOCK_SECRET_ACCESS_KEY"
