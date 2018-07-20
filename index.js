@@ -124,7 +124,7 @@ class ServerlessDynamodbLocal {
 
         if(options && options.online){
             this.serverlessLog("Connecting to online tables...");
-            if (!options.region) { 
+            if (!options.region) {
                 throw new Error("please specify the region");
             }
             dynamoOptions = {
@@ -139,6 +139,7 @@ class ServerlessDynamodbLocal {
                 accessKeyId: "MOCK_ACCESS_KEY_ID",
                 secretAccessKey: "MOCK_SECRET_ACCESS_KEY"
             };
+            console.log("SLS IS USING", dynamoOptions)
         }
 
         return {
@@ -154,7 +155,7 @@ class ServerlessDynamodbLocal {
     }
 
     seedHandler() {
-        const options = this.options; 
+        const options = this.options;
         const dynamodb = this.dynamodbOptions(options);
 
         return BbPromise.each(this.seedSources, (source) => {
